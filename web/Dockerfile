@@ -9,7 +9,7 @@ COPY . .
 RUN npm run build
 
 # ---- runtime stage: static files served by unprivileged NGINX on :8080 ------
-FROM nginxinc/nginx-unprivileged:1.28-alpine AS runtime
+FROM nginxinc/nginx-unprivileged:1.31-alpine AS runtime
 COPY nginx-static.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /src/dist /usr/share/nginx/html
 EXPOSE 8080
